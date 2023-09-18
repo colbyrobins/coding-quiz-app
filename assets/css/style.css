@@ -6,9 +6,9 @@ header {
 
 #quiz-app {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
@@ -16,18 +16,42 @@ header {
     padding: 30px;
 }
 
-#question {
-    font-size: 24px;
-    font-weight: bold;
+.quiz-title {
+    font-size: 30px;
 }
 
-#answers {
+.quiz-description {
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.start-btn {
+    background-color: rgb(98, 0, 255);
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.answers {
     display: flex;
     flex-direction: column;
     text-align: center;
     font-size: 20px;
     margin: 10px 0;
+    justify-content: left;
 }
+.option-btn {
+    background-color: violet;
+    align-items: flex-start;
+}
+
+/* #question {
+    font-size: 24px;
+    font-weight: bold;
+}
+
 
 .answer-button {
     background-color: rgb(98, 0, 255);
@@ -55,4 +79,4 @@ header {
 
 #start:hover {
     background-color: rgb(140, 0, 255);
-}
+} */
