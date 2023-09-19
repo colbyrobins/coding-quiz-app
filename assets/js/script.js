@@ -28,21 +28,48 @@ var timerCountdown;
 
 var questions = [
     {
-        question: "What does HTML stand for?",
+        question: "Commonly used data types Do Not incldue:",
         answers: [
-            {text: "Hyperlink Text Markup Language", correct: false},
-            {text: "Hyper Text Makeup Language", correct: false},
-            {text: "Hyper Text Markup Language", correct: true},
-            {text: "Hyper Transfer Markup Language", correct: false},
+            {text: "strings", correct: false},
+            {text: "booleans", correct: false},
+            {text: "alerts", correct: true},
+            {text: "numbers", correct: false},
         ]
     },
     {
-        question: "",
+        question: "The condition in an if / else statment is enclosed with __________.",
         answers: [
-            {text: "", correct: false},
-            {text: " ", correct: false},
-            {text: "", correct: true},
-            {text: "", correct: false},
+            {text: "quotes", correct: false},
+            {text: "curly brackets", correct: false},
+            {text: "parenthesis", correct: true},
+            {text: "square brackets", correct: false},
+        ]
+    },
+    {
+        question: "Arrays in JavaScript can be used to store ____________.",
+        answers: [
+            {text: "number and strings", correct: false},
+            {text: "other arrays", correct: false},
+            {text: "booleans", correct: false},
+            {text: "all of the above", correct: true},
+        ]
+    },
+    {
+        question: "Sting values must be enclosed within __________ when being assigned to variables.",
+        answers: [
+            {text: "commas", correct: false},
+            {text: "curly brakets", correct: false},
+            {text: "quotes", correct: false},
+            {text: "parenthesis", correct: true},
+        ]
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        answers: [
+            {text: "JavaScript", correct: false},
+            {text: "termina/bash", correct: false},
+            {text: "for loops", correct: false},
+            {text: "console.log", correct: true},
         ]
     }
 ]
@@ -146,23 +173,50 @@ function submitScore() {
 }
 
 function displayHighScores() {
+    
     removeAllChildren(quizApp);
+    
     var highScoreTitleEl = document.createElement("h1");
+
     highScoreTitleEl.innerHTML = "High scores"
     quizApp.appendChild(highScoreTitleEl);
 
     var scoreContainer = document.createElement("div");
-    // add logic to iterate scores from memory.
     var scoreData = JSON.parse(localStorage.getItem("scoreData"));
-    console.log(scoreData)
+
     for (var i = 0; i < scoreData.length; i++) {
         var scoreEntryEl = document.createElement("div");
+        scoreEntryEl.classList.add("highscore")
         j = i + 1
         scoreEntryEl.textContent = j + ". " + scoreData[i].initials + " - " + scoreData[i].score;
         scoreContainer.appendChild(scoreEntryEl)
     }
 
     quizApp.appendChild(scoreContainer)
+    var btnContainer = document.createElement("div");
+    var goBack = document.createElement("buttons");
+    var clearHighScores = document.createElement("buttons");
+    
+    goBack.classList.add("option-btn")
+    clearHighScores.classList.add("option-btn")
+
+    goBack.textContent = "Go back"
+    clearHighScores.textContent = "Clear high scores"
+
+    btnContainer.append(goBack)
+    btnContainer.append(clearHighScores)
+    quizApp.appendChild(btnContainer)
+
+    goBack.addEventListener("click", function() {
+        removeAllChildren(quizApp)
+        init();
+    });
+    
+    clearHighScores.addEventListener("click", function() {
+        removeAllChildren(quizApp)
+        localStorage.removeItem("scores")
+    });
+    
 }
 
 function checkAnswer(option) {
@@ -185,12 +239,13 @@ function checkAnswer(option) {
     }else {
         done()
     }
+
 }
 
 function displayQuestion() {
     quizApp.setAttribute("style", "display:flex; flex-direction: column; ");
     // answers.setAttribute("style", "display:flex; flex-direction: column;align-items: baseline; flex: 1;")
-    answers.setAttribute("style", "display:flex; flex-direction: column; ")
+    answers.setAttribute("style", "display:flex; flex-direction: column;")
 
     // get the question to display.
     var currQuestion = questions[currQuestionIndex];
@@ -202,7 +257,7 @@ function displayQuestion() {
         var optionBtn = document.createElement("button");
         optionBtn.textContent = option.text;
         answers.appendChild(optionBtn);
-        optionBtn.setAttribute("style", "flex-grow: 1; max-width: 200px; background-color: rgb(98, 0, 255); color: white; margin: 1px 1px; border-radius: 5px; ")
+        optionBtn.classList.add("option-btn")
         
         // add an event listener to each button to check if the answer
         // was correct or not.

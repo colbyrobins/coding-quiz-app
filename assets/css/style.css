@@ -6,9 +6,6 @@ header {
 
 #quiz-app {
     display: flex;
-    /* flex-direction: column;
-    justify-content: center;
-    align-items: center; */
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
@@ -31,7 +28,7 @@ header {
     color: white;
     font-size: 16px;
     border-radius: 5px;
-    height: 30px;
+    height: 45px;
 }
 
 .answers {
@@ -42,41 +39,28 @@ header {
     margin: 10px 0;
     justify-content: left;
 }
+
 .option-btn {
+    font-size: 20px;
+    flex-grow: 1; 
+    max-width: 200px; 
+    background-color: rgb(98, 0, 255); 
+    color: white; 
+    margin: 1px 1px; 
+    border-radius: 5px;
+    height: 40px; 
+}
+
+.option-btn:hover {
     background-color: violet;
-    align-items: flex-start;
 }
 
-/* #question {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-
-.answer-button {
-    background-color: rgb(98, 0, 255);
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
+.highscore {
+    background-color: rgb(172, 151, 206); 
+    margin: 10px;
+    width: 500px;
     height: 30px;
+    border-radius: 2px;
+    font-size: 20px;
+    color: black;
 }
-
-#result {
-    display: none;
-    border-top: solid;
-    border-top-width: 1px;
-    font-size: 30px;
-    color: rgba(128, 128, 128, 0.5);
-}
-
-#start {
-    background-color: rgb(98, 0, 255);
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    height: 30px;
-}
-
-#start:hover {
-    background-color: rgb(140, 0, 255);
-} */
