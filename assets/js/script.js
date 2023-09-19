@@ -96,6 +96,7 @@ function done() {
     // clear the timer and remove the last quiz question.
     clearInterval(timerCountdown);
     removeAllChildren(quizApp);
+    currQuestionIndex = 0 // reset the question index.
     submitScore();
 }
 
@@ -212,11 +213,6 @@ function displayHighScores() {
         init();
     });
     
-    clearHighScores.addEventListener("click", function() {
-        removeAllChildren(quizApp)
-        localStorage.removeItem("scores")
-    });
-    
 }
 
 function checkAnswer(option) {
@@ -239,7 +235,6 @@ function checkAnswer(option) {
     }else {
         done()
     }
-
 }
 
 function displayQuestion() {
